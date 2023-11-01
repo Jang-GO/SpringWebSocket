@@ -1,6 +1,5 @@
 package com.example.springwebsocket.config;
 
-import com.example.springwebsocket.handler.WebSockChatHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.socket.WebSocketHandler;
