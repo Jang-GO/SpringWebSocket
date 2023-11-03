@@ -24,6 +24,18 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-websocket'
+    implementation 'org.springframework.boot:spring-boot-starter-freemarker'
+    implementation 'org.springframework.boot:spring-boot-devtools'
+    // https://mvnrepository.com/artifact/org.webjars.bower/bootstrap
+    implementation group: 'org.webjars.bower', name: 'bootstrap', version: '4.5.3'
+    // https://mvnrepository.com/artifact/org.webjars/vue
+    implementation group: 'org.webjars', name: 'vue', version: '2.5.16'
+// https://mvnrepository.com/artifact/org.webjars.npm/axios
+    implementation group: 'org.webjars.npm', name: 'axios', version: '1.4.0'
+    implementation 'org.webjars:sockjs-client:1.1.2'
+    implementation 'org.webjars:stomp-websocket:2.3.3-1'
+    implementation 'com.google.code.gson:gson:2.8.0'
+
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
