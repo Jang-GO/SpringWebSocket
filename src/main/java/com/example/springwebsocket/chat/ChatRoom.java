@@ -1,31 +1,22 @@
 package com.example.springwebsocket.chat;
 
-import lombok.Builder;
 import lombok.Getter;
-import org.springframework.web.socket.WebSocketSession;
+/**
+ * pub/sub 방식을 이용하면 구독자 관리가 알아서 되므로 웹소켓 세션 관리 필요 x
+ * 발송의 구현도 알아서 해결
+ */
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.UUID;
 
 @Getter
 public class ChatRoom {
     private String roomId;
     private String name;
-    private Set<WebSocketSession> sessions = new HashSet<>();
 
-    @Builder
-    public ChatRoom(String roomId, String name){
-        this.roomId = roomId;
-        this.name = name;
-    }
-    public void handleActions(WebSocketSession session, ChatMessage chatMessage, ChatService chatService){
-        if(chatMessage.getType().equals(ChatMessage.MessageType.ENTER)){
-            sessions.add(session);
-            chatMessage.setMessage(chatMessage.getSender() + "님이 입장했습니다.");
-        }
-        sendMessage(chatMessage, chatService);
-    }
-    public <T> void sendMessage(T message, ChatService chatService){
-        sessions.parallelStream().forEach(session -> chatService.sendMessage(session,message));
+    public static ChatRoom create(String name){
+        ChatRoom chatRoom = new ChatRoom();
+        chatRoom.roomId = UUID.randomUUID().toString();
+        chatRoom.name = name;
+        return chatRoom;
     }
 }
